@@ -94,7 +94,7 @@ apikey: SUA-CHAVE-API
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/send/text \
+curl -X POST http://localhost:4010/send/text \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -151,7 +151,7 @@ Envia uma mensagem com preview de link (título, descrição, imagem).
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/send/link \
+curl -X POST http://localhost:4010/send/link \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -237,7 +237,7 @@ delay: 0
 
 **Exemplo cURL (URL)**:
 ```bash
-curl -X POST http://localhost:4000/send/media \
+curl -X POST http://localhost:4010/send/media \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -250,7 +250,7 @@ curl -X POST http://localhost:4000/send/media \
 
 **Exemplo cURL (Arquivo)**:
 ```bash
-curl -X POST http://localhost:4000/send/media \
+curl -X POST http://localhost:4010/send/media \
   -H "apikey: SUA-CHAVE-API" \
   -F "number=5511999999999" \
   -F "type=image" \
@@ -311,7 +311,7 @@ Cria uma enquete (poll) com múltiplas opções.
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/send/poll \
+curl -X POST http://localhost:4010/send/poll \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -362,7 +362,7 @@ Envia um sticker (figurinha) via URL.
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/send/sticker \
+curl -X POST http://localhost:4010/send/sticker \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -415,7 +415,7 @@ Envia uma localização geográfica.
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/send/location \
+curl -X POST http://localhost:4010/send/location \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -471,7 +471,7 @@ Envia um cartão de contato (VCard).
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/send/contact \
+curl -X POST http://localhost:4010/send/contact \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -583,7 +583,7 @@ Tipos de chave PIX: `phone`, `email`, `cpf`, `cnpj`, `random` (EVP).
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/send/button \
+curl -X POST http://localhost:4010/send/button \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -694,7 +694,7 @@ curl -X POST http://localhost:4000/send/button \
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/send/list \
+curl -X POST http://localhost:4010/send/list \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -764,7 +764,7 @@ Adiciona ou remove uma reação (emoji) em uma mensagem.
 **Exemplo cURL**:
 ```bash
 # Adicionar reação
-curl -X POST http://localhost:4000/message/react \
+curl -X POST http://localhost:4010/message/react \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -775,7 +775,7 @@ curl -X POST http://localhost:4000/message/react \
   }'
 
 # Remover reação
-curl -X POST http://localhost:4000/message/react \
+curl -X POST http://localhost:4010/message/react \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -824,7 +824,7 @@ Marca mensagem(ns) como lida(s).
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/message/markread \
+curl -X POST http://localhost:4010/message/markread \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -873,7 +873,7 @@ Edita o conteúdo de uma mensagem enviada.
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/message/edit \
+curl -X POST http://localhost:4010/message/edit \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -921,7 +921,7 @@ Deleta uma mensagem para todos (revoke).
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/message/delete \
+curl -X POST http://localhost:4010/message/delete \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -975,7 +975,7 @@ Define o status de presença no chat (digitando, gravando áudio, online).
 **Exemplo cURL**:
 ```bash
 # Mostrar "digitando..."
-curl -X POST http://localhost:4000/message/presence \
+curl -X POST http://localhost:4010/message/presence \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -985,7 +985,7 @@ curl -X POST http://localhost:4000/message/presence \
   }'
 
 # Mostrar "gravando áudio..."
-curl -X POST http://localhost:4000/message/presence \
+curl -X POST http://localhost:4010/message/presence \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -995,7 +995,7 @@ curl -X POST http://localhost:4000/message/presence \
   }'
 
 # Parar de digitar
-curl -X POST http://localhost:4000/message/presence \
+curl -X POST http://localhost:4010/message/presence \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -1054,7 +1054,7 @@ Faz download de mídia de uma mensagem recebida e retorna em base64.
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/message/downloadimage \
+curl -X POST http://localhost:4010/message/downloadimage \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -1118,7 +1118,7 @@ Consulta o status de entrega/leitura de uma mensagem no banco de dados.
 
 **Exemplo cURL**:
 ```bash
-curl -X POST http://localhost:4000/message/status \
+curl -X POST http://localhost:4010/message/status \
   -H "Content-Type: application/json" \
   -H "apikey: SUA-CHAVE-API" \
   -d '{
@@ -1223,7 +1223,7 @@ Isso simula o tempo que uma pessoa levaria para digitar cada mensagem.
 ### 2. Verificar Status de Conexão
 Antes de enviar mensagens em massa, verifique se a instância está conectada:
 ```bash
-curl "http://localhost:4000/instance/status" \
+curl "http://localhost:4010/instance/status" \
   -H "apikey: TOKEN-DA-INSTANCIA"
 ```
 

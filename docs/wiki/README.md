@@ -142,7 +142,7 @@ Consulta rápida para desenvolvedores.
 ### 🔗 Links Importantes
 - 🌐 [Repositório Oficial](https://git.evoai.app/Evolution/evolution-go)
 - 📚 [Biblioteca Whatsmeow](https://github.com/tulir/whatsmeow)
-- 🔧 [API Swagger](http://localhost:4000/swagger/index.html) (quando servidor estiver rodando)
+- 🔧 [API Swagger](http://localhost:4010/swagger/index.html) (quando servidor estiver rodando)
 - 🐛 [Reportar Issues](https://git.evoai.app/Evolution/evolution-go/issues)
 
 ### 💬 Suporte

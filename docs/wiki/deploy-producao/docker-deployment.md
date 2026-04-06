@@ -35,7 +35,7 @@ Guia de deploy do Evolution GO usando Docker, Docker Compose, Swarm e Kubernetes
 │  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐ │
 │  │ Evolution GO │◄────►│  PostgreSQL  │      │  RabbitMQ    │ │
 │  │   (API)      │      │   (Auth DB)  │      │  (Events)    │ │
-│  │  Port: 4000  │      │   (Users DB) │      │  Port: 5672  │ │
+│  │  Port: 4010  │      │   (Users DB) │      │  Port: 5672  │ │
 │  └──────┬───────┘      └──────────────┘      └──────────────┘ │
 │         │                                                       │
 │         │              ┌──────────────┐      ┌──────────────┐ │
@@ -74,9 +74,9 @@ services:
     container_name: evolution-go
     restart: unless-stopped
     ports:
-      - "4000:4000"
+      - "4010:4010"
     environment:
-      SERVER_PORT: 4000
+      SERVER_PORT: 4010
       CLIENT_NAME: "evolution"
       GLOBAL_API_KEY: "SUBSTITUA-POR-UUID-FORTE"
 
@@ -144,7 +144,7 @@ docker-compose up -d
 
 # Verificar
 docker-compose logs -f evolution-go
-curl http://localhost:4000/server/ok
+curl http://localhost:4010/server/ok
 ```
 
 ### Setup Completo
@@ -159,9 +159,9 @@ services:
     image: evoapicloud/evolution-go:latest
     restart: unless-stopped
     ports:
-      - "4000:4000"
+      - "4010:4010"
     environment:
-      SERVER_PORT: 4000
+      SERVER_PORT: 4010
       GLOBAL_API_KEY: "SUA-CHAVE-AQUI"
 
       POSTGRES_AUTH_DB: "postgresql://postgres:senha@postgres:5432/evogo_auth?sslmode=disable"
@@ -240,8 +240,8 @@ volumes:
 ```
 
 **Acessos:**
-- Evolution GO: http://localhost:4000
-- Swagger: http://localhost:4000/swagger/index.html
+- Evolution GO: http://localhost:4010
+- Swagger: http://localhost:4010/swagger/index.html
 - RabbitMQ: http://localhost:15672 (admin/admin)
 - MinIO: http://localhost:9001 (minioadmin/minioadmin)
 
@@ -255,7 +255,7 @@ EVOLUTION_VERSION=latest
 POSTGRES_VERSION=15-alpine
 
 # Portas
-EVOLUTION_PORT=4000
+EVOLUTION_PORT=4010
 POSTGRES_PORT=5432
 
 # Credenciais
@@ -275,7 +275,7 @@ services:
   evolution-go:
     image: evoapicloud/evolution-go:${EVOLUTION_VERSION:-latest}
     ports:
-      - "${EVOLUTION_PORT:-4000}:4000"
+      - "${EVOLUTION_PORT:-4010}:4010"
     environment:
       GLOBAL_API_KEY: "${GLOBAL_API_KEY}"
 ```
@@ -286,7 +286,7 @@ services:
 services:
   evolution-go:
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost:4000/server/ok"]
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:4010/server/ok"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -371,7 +371,7 @@ services:
     networks:
       - network_public
     environment:
-      SERVER_PORT: 4000
+      SERVER_PORT: 4010
       GLOBAL_API_KEY: "sua-chave-api"
       POSTGRES_AUTH_DB: "postgresql://user:pass@postgres:5432/evogo_auth"
       POSTGRES_USERS_DB: "postgresql://user:pass@postgres:5432/evogo_users"
@@ -403,7 +403,7 @@ services:
         - traefik.http.routers.evolution.rule=Host(`evolution.domain.com`)
         - traefik.http.routers.evolution.entrypoints=websecure
         - traefik.http.routers.evolution.tls.certresolver=letsencrypt
-        - traefik.http.services.evolution.loadbalancer.server.port=4000
+        - traefik.http.services.evolution.loadbalancer.server.port=4010
 
 volumes:
   evolution_go_data:
@@ -475,9 +475,9 @@ Portainer é uma interface web para gerenciar containers Docker, Docker Swarm e 
    - Clique em **Deploy the stack**
 
 4. **Acesse o Evolution Go**:
-   - Abra `http://seu-servidor:4000` (ou a porta configurada)
-   - Swagger UI: `http://seu-servidor:4000/swagger/index.html`
-   - Manager UI: `http://seu-servidor:4000/manager/login`
+   - Abra `http://seu-servidor:4010` (ou a porta configurada)
+   - Swagger UI: `http://seu-servidor:4010/swagger/index.html`
+   - Manager UI: `http://seu-servidor:4010/manager/login`
 
 ### Variáveis de Ambiente Principais
 
@@ -486,7 +486,7 @@ Portainer é uma interface web para gerenciar containers Docker, Docker Swarm e 
 | `GLOBAL_API_KEY` | Chave de API para autenticação | Sim | - |
 | `POSTGRES_USER` | Usuário do PostgreSQL | Sim | `postgres` |
 | `POSTGRES_PASSWORD` | Senha do PostgreSQL | Sim | `postgres` |
-| `EVOLUTION_PORT` | Porta do Evolution Go | Não | `4000` |
+| `EVOLUTION_PORT` | Porta do Evolution Go | Não | `4010` |
 | `DATABASE_SAVE_MESSAGES` | Salvar mensagens no banco | Não | `false` |
 
 ### Notas
@@ -521,7 +521,7 @@ metadata:
   name: evolution-config
   namespace: evolution-go
 data:
-  SERVER_PORT: "4000"
+  SERVER_PORT: "4010"
   CLIENT_NAME: "evolution"
   WADEBUG: "INFO"
   LOGTYPE: "console"
@@ -562,7 +562,7 @@ spec:
       - name: evolution-go
         image: evoapicloud/evolution-go:latest
         ports:
-        - containerPort: 4000
+        - containerPort: 4010
         env:
         - name: SERVER_PORT
           valueFrom:
@@ -584,13 +584,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /server/ok
-            port: 4000
+            port: 4010
           initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /server/ok
-            port: 4000
+            port: 4010
           initialDelaySeconds: 10
           periodSeconds: 5
         volumeMounts:
@@ -621,8 +621,8 @@ spec:
   selector:
     app: evolution-go
   ports:
-  - port: 4000
-    targetPort: 4000
+  - port: 4010
+    targetPort: 4010
 ```
 
 #### Ingress
@@ -652,7 +652,7 @@ spec:
           service:
             name: evolution-go-service
             port:
-              number: 4000
+              number: 4010
 ```
 
 #### HorizontalPodAutoscaler

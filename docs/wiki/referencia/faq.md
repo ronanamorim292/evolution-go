@@ -261,7 +261,7 @@ Utilize [Issues no GitLab](https://git.evoai.app/Evolution/evolution-go/issues) 
 - [Guia de Instalação](../fundamentos/installation.md)
 - [Configuração](../fundamentos/configuration.md)
 - [Referência de API](./api-reference.md)
-- [Swagger UI](http://localhost:4000/swagger/index.html)
+- [Swagger UI](http://localhost:4010/swagger/index.html)
 
 ### Suporte
 - [Issues GitLab](https://git.evoai.app/Evolution/evolution-go/issues)

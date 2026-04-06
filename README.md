@@ -209,9 +209,9 @@ Evolution Go includes a Portainer-optimized stack file for easy deployment on Po
    - Click **Deploy the stack**
 
 4. **Access Evolution Go**:
-   - Open `http://your-server:4000` (or the port you configured)
-   - Swagger UI: `http://your-server:4000/swagger/index.html`
-   - Manager UI: `http://your-server:4000/manager/login`
+   - Open `http://your-server:4010` (or the port you configured)
+   - Swagger UI: `http://your-server:4010/swagger/index.html`
+   - Manager UI: `http://your-server:4010/manager/login`
 
 ### Files included
 - `docker-compose.yml` - Standard Docker Compose file (also works with Portainer)

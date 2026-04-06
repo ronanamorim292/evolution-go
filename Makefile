@@ -165,7 +165,7 @@ docker-build: ## Build da imagem Docker
 
 docker-run: ## Roda container Docker
 	@echo "$(GREEN)🐳 Iniciando container...$(NC)"
-	docker run -p 4000:4000 --env-file .env $(APP_NAME):latest
+	docker run -p 4010:4010 --env-file .env $(APP_NAME):latest
 
 docker-compose-up: ## Sobe todos os serviços com docker-compose
 	@echo "$(GREEN)🐳 Iniciando serviços com docker-compose...$(NC)"
@@ -245,18 +245,18 @@ version: ## Exibe versão do Go e dependências
 
 status: ## Verifica status da aplicação
 	@echo "$(GREEN)🔍 Verificando status...$(NC)"
-	@curl -s http://localhost:4000/health || echo "$(RED)❌ Aplicação não está rodando$(NC)"
+	@curl -s http://localhost:4010/health || echo "$(RED)❌ Aplicação não está rodando$(NC)"
 
 ##@ Desenvolvimento Avançado
 
 profile-cpu: ## Profile de CPU (requer aplicação rodando)
 	@echo "$(GREEN)📊 Capturando profile de CPU...$(NC)"
-	curl http://localhost:4000/debug/pprof/profile?seconds=30 > cpu.prof
+	curl http://localhost:4010/debug/pprof/profile?seconds=30 > cpu.prof
 	$(GO) tool pprof -http=:8080 cpu.prof
 
 profile-mem: ## Profile de memória (requer aplicação rodando)
 	@echo "$(GREEN)📊 Capturando profile de memória...$(NC)"
-	curl http://localhost:4000/debug/pprof/heap > mem.prof
+	curl http://localhost:4010/debug/pprof/heap > mem.prof
 	$(GO) tool pprof -http=:8080 mem.prof
 
 generate: ## Roda go generate

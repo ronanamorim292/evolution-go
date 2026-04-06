@@ -19,7 +19,7 @@ Para documentação detalhada, consulte: [Configuração](../fundamentos/configu
 
 | Variável | Padrão | Descrição |
 |----------|--------|-----------|
-| `SERVER_PORT` | `4000` | Porta HTTP |
+| `SERVER_PORT` | `4010` | Porta HTTP |
 | `CLIENT_NAME` | `evolution` | Nome identificador |
 | `OS_NAME` | `Linux` | Sistema operacional |
 
@@ -183,7 +183,7 @@ GLOBAL_API_KEY=df16caad-d0d2-41b2-bec5-75b90048a0db
 DATABASE_SAVE_MESSAGES=false
 
 # Servidor
-SERVER_PORT=4000
+SERVER_PORT=4010
 CLIENT_NAME=evolution
 OS_NAME=Linux
 
