@@ -6,7 +6,7 @@ services:
     container_name: evolution-go
     restart: unless-stopped
     ports:
-      - "${EVOLUTION_PORT:-4010}:4010"
+      - "4010:4010"
     environment:
       # Servidor
       SERVER_PORT: 4010
