@@ -214,6 +214,7 @@ Evolution Go includes a Portainer-optimized stack file for easy deployment on Po
    - Manager UI: `http://your-server:4000/manager/login`
 
 ### Files included
+- `docker-compose.yml` - Standard Docker Compose file (also works with Portainer)
 - `docker-compose.portainer.yml` - Stack file with environment variable substitution
 - `portainer.env.example` - Example environment variables file
 - `init-db.sql` - Database initialization script
