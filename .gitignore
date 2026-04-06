@@ -1,0 +1,13 @@
+.env
+portainer.env
+*.env.local
+logs/*
+build/
+*.prof
+coverage.*
+.air.toml
+.idea/
+.vscode/
+.DS_Store
+evolution-go
+docker-compose.override.yml
